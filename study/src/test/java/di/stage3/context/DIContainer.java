@@ -33,7 +33,7 @@ class DIContainer {
                 .orElseThrow(() -> new IllegalArgumentException("Bean이 존재하지 않습니다."));
     }
 
-    public Object makeInstance(Class<?> clazz) {
+    private Object makeInstance(Class<?> clazz) {
         try {
             Constructor<?> constructor = clazz.getDeclaredConstructor();
             constructor.setAccessible(true);

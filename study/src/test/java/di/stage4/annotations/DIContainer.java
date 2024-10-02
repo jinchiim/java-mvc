@@ -17,7 +17,7 @@ class DIContainer {
     private static final Logger log = LoggerFactory.getLogger(DIContainer.class);
     private final Set<Object> beans;
 
-    public DIContainer(final Set<Class<?>> classes) {
+    private DIContainer(final Set<Class<?>> classes) {
         this.beans = classes.stream()
                 .map(this::makeInstance)
                 .collect(Collectors.toSet());
@@ -36,7 +36,7 @@ class DIContainer {
                 .orElseThrow(() -> new IllegalArgumentException("Bean이 존재하지 않습니다."));
     }
 
-    public Object makeInstance(Class<?> clazz) {
+    private Object makeInstance(Class<?> clazz) {
         try {
             Constructor<?> constructor = clazz.getDeclaredConstructor();
             constructor.setAccessible(true);
